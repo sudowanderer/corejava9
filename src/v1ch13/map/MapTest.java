@@ -34,6 +34,8 @@ public class MapTest
       System.out.println(staff.get("157-62-7935"));
 
       // iterate through all entries
+      Set<String> keySet = staff.keySet();
+      System.out.println("set:" + keySet.getClass());
 
       for (Map.Entry<String, Employee> entry : staff.entrySet())
       {

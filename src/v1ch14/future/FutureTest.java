@@ -13,10 +13,12 @@ public class FutureTest
    public static void main(String[] args)
    {
       Scanner in = new Scanner(System.in);
-      System.out.print("Enter base directory (e.g. /usr/local/jdk5.0/src): ");
-      String directory = in.nextLine();
-      System.out.print("Enter keyword (e.g. volatile): ");
-      String keyword = in.nextLine();
+//      System.out.print("Enter base directory (e.g. /usr/local/jdk5.0/src): ");
+//      String directory = in.nextLine();
+      String directory = "E:\\Tomcat7\\logs";
+//      System.out.print("Enter keyword (e.g. volatile): ");
+//      String keyword = in.nextLine();
+      String keyword = "from";
 
       MatchCounter counter = new MatchCounter(new File(directory), keyword);
       FutureTask<Integer> task = new FutureTask<>(counter);
@@ -75,13 +77,16 @@ class MatchCounter implements Callable<Integer>
             }
             else
             {
+            	System.out.println("current file:" + file.getName());
                if (search(file)) count++;
             }
 
          for (Future<Integer> result : results)
             try
             {
+               System.out.println("before get");
                count += result.get();
+               System.out.println("after get");
             }
             catch (ExecutionException e)
             {

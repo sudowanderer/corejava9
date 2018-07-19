@@ -12,11 +12,16 @@ public class ThreadPoolTest
 {
    public static void main(String[] args) throws Exception
    {
-      Scanner in = new Scanner(System.in);
-      System.out.print("Enter base directory (e.g. /usr/local/jdk5.0/src): ");
-      String directory = in.nextLine();
-      System.out.print("Enter keyword (e.g. volatile): ");
-      String keyword = in.nextLine();
+//      Scanner in = new Scanner(System.in);
+//      System.out.print("Enter base directory (e.g. /usr/local/jdk5.0/src): ");
+//      String directory = in.nextLine();
+//      System.out.print("Enter keyword (e.g. volatile): ");
+//      String keyword = in.nextLine();
+	      String directory = "E:\\Tomcat7\\logs";
+	      String keyword = "from";
+	      List<String> s = new LinkedList<>();
+	      
+	      
 
       ExecutorService pool = Executors.newCachedThreadPool();
 
