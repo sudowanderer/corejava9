@@ -1,5 +1,10 @@
 package v1ch12.pair1;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import org.omg.CORBA.Object;
+
 /**
  * @version 1.01 2012-01-26
  * @author Cay Horstmann
@@ -12,6 +17,12 @@ public class PairTest1
       Pair<String> mm = ArrayAlg.minmax(words);
       System.out.println("min = " + mm.getFirst());
       System.out.println("max = " + mm.getSecond());
+      
+      
+      //测试泛型方法
+      double middle = (double) ArrayAlg.getMiddle(3.14, 1729, 0);
+      
+      String mid = ArrayAlg.getMiddle("a", "b", "c");
    }
 }
 
@@ -34,4 +45,17 @@ class ArrayAlg
       }
       return new Pair<String>(min, max);
    }
-}
+
+   public static <T> T getMiddle(T...  a){
+	   return a[a.length / 2];
+   }
+   
+   /**
+    * 泛型限定 只能有一个类，它必须是限定列表的第一个，但是可以有多个限定接口
+    * @param a
+    * @return
+    */
+   public static <T extends java.lang.Object & Serializable & AutoCloseable> T getMiddle2(T...  a){
+	   return a[a.length / 2];
+   }
+ }
